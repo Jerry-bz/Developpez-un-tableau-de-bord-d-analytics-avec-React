@@ -1,0 +1,24 @@
+.nav {
+    display: flex;
+    width: 5%;
+    flex-direction: column;
+    align-items: center;
+    background-color:#020203;
+    justify-content: space-around;
+}
+
+.activities {
+    display: flex;
+    flex-direction: column;
+}
+
+.activitiesImg {
+    width: 100%;
+    margin: 5% 0%
+}
+
+.activitiesText {
+    color: white;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+}

@@ -1,0 +1,23 @@
+ .header {
+    background-color: #020203;
+    display: flex;
+    justify-content: space-between;
+    padding: 1%;
+    align-items: center;
+}
+
+img {
+    width: 10%;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-around;
+    width: 80%
+} 
+
+.nav a {
+    text-decoration: none;
+    color: white;
+}
+
