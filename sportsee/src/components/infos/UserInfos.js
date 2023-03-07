@@ -1,6 +1,6 @@
-import styles from "./InfosUser.module.css";
+import "./UserInfos.css";
 import PropTypes from "prop-types";
-
+import React from "react";
 
 /**
  * Component that displays the user's first name
@@ -10,11 +10,10 @@ import PropTypes from "prop-types";
  */
 
 export default function Infos({ firstName }) {
-
   return (
-    <section className={styles.userInfos}>
-      <h3 className={styles.title}>
-        Bonjour <span className={styles.firstName}>{firstName}</span>
+    <section className="userInfos">
+      <h3 className="userInfos_title">
+        Bonjour <span className="userInfos_firstName">{firstName}</span>
       </h3>
       <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
     </section>

@@ -6,67 +6,76 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
+  ResponsiveContainer,
 } from "recharts";
+import "./BarChart.css";
 
-const data = [
-  {
-    day: 1,
-    kilogram: 80,
-    calories: 240,
-  },
-  {
-    day: 2,
-    kilogram: 80,
-    calories: 220,
-  },
-  {
-    day: 3,
-    kilogram: 81,
-    calories: 280,
-  },
-  {
-    day: 6,
-    kilogram: 81,
-    calories: 290,
-  },
-  {
-    day: 4,
-    kilogram: 80,
-    calories: 160,
-  },
-  {
-    day: 5,
-    kilogram: 78,
-    calories: 162,
-  },
-  {
-    day: 6,
-    kilogram: 76,
-    calories: 390,
-  },
-];
+export default function BarCharts({ dataActivity }) {
+  const { sessions, units, legend, colors } = dataActivity;
 
-export default function BarCharts() {
+  const CustomTooltip = ({ active, payload }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="barchart__graph__tooltip">
+          <p className="label">{`${payload[0].value}${units[0]}`}</p>
+          <p className="label">{`${payload[1].value}${units[1]}`}</p>
+        </div>
+      );
+    }
+  };
   return (
-    <BarChart
-      width={1000}
-      height={300}
-      data={data}
-      margin={{
-        top: 5,
-        right: 30,
-        left: 20,
-        bottom: 5,
-      }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="day" />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Bar dataKey="kilogram" fill="#8884d8" />
-      <Bar dataKey="calories" fill="#82ca9d" />
-    </BarChart>
+    <div className="barchart">
+      <div className="barchart__legend">
+        <div className="barchart__legend__titre">Activité quotidienne</div>
+        <div className="barchart__legend__xy">
+          {legend.map((legend, index) => (
+            <div key={index} className={"barchart__legend__xy__" + index}>
+              <div
+                className={"barchart__legend__xy__" + index + "__circle"}
+              ></div>
+              <div className={"barchart__legend__xy__" + index + "__label"}>
+                {legend}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="barchart__graph">
+        <ResponsiveContainer>
+          <BarChart data={sessions} barGap={8}>
+            <CartesianGrid vertical={false} stroke="#DEDEDE" />
+            <XAxis
+              domain={["dataMin", "dataMax"]}
+              dataKey="index"
+              padding={{ left: 10, right: 10 }}
+              tickLine={false}
+              axisLine={false}
+            />
+            <YAxis
+              dataKey="calories"
+              domain={[0, "dataMax"]}
+              hide={false}
+              orientation="right"
+              tickLine={false}
+              axisLine={false}
+              tickMargin={10}
+            />
+            <Tooltip content={CustomTooltip} />
+            <Bar
+              dataKey="kilogram"
+              fill={colors[0]}
+              radius={[3, 3, 0, 0]}
+              barSize={8}
+            />
+            <Bar
+              dataKey="calories"
+              fill={colors[1]}
+              radius={[3, 3, 0, 0]}
+              barSize={8}
+            />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+    </div>
   );
 }

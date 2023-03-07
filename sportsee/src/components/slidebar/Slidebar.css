@@ -1,4 +1,4 @@
-.nav {
+.slidebar {
     display: flex;
     width: 5%;
     flex-direction: column;
@@ -7,17 +7,17 @@
     justify-content: space-around;
 }
 
-.activities {
+.slidebar_activities {
     display: flex;
     flex-direction: column;
 }
 
-.activitiesImg {
-    width: 100%;
-    margin: 5% 0%
+.slidebar_img {
+    width: 55%;
+    margin: 5% auto;
 }
 
-.activitiesText {
+.slidebar_text {
     color: white;
     writing-mode: vertical-lr;
     transform: rotate(180deg);

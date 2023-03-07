@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from "react";
-import getUserData from "../util/GetUserData";
-import Header from "../components/header/Header";
-import Slidebar from "../components/slidebar/Slidebar";
-import Infos from "../components/infos/InfosUser";
-import styles from "./Home.module.css";
-import BarCharts from "../components/barchart/BarChart";
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Home.css";
 
+/**
+ * Show home page and redirect to user
+ * @Component Home
+ * @returns {JSX.component}
+ */
 
-export default function Home() {
-  const [name, setName] = useState("");
-  useEffect(() => {
-    getUserData(18).then((data) =>
-      setName(data.USER_MAIN_DATA.userInfos.firstName)
-    );
-  }, []);
-
+function Home() {
   return (
-    <>
-      <Header />
-      <main>
-        <Slidebar />
-        <section className={styles.user}>
-          <Infos firstName={name} />
-          <BarCharts />
-        </section>
-      </main>
-    </>
+    <div className="home">
+      <div className="home_user">
+        <Link to="/User/18">
+          <div>
+            <h3>Cecilia id:18</h3>
+          </div>
+        </Link>
+        <Link to="/User/12">
+          <div>
+            <h3>Karl id:12</h3>
+          </div>
+        </Link>
+      </div>
+    </div>
   );
 }
+
+export default Home;
