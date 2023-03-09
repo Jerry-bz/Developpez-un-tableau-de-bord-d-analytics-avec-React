@@ -15,7 +15,7 @@ export default function Infos({ firstName }) {
       <h3 className="userInfos_title">
         Bonjour <span className="userInfos_firstName">{firstName}</span>
       </h3>
-      <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+      <p className="userInfos_text">Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
     </section>
   );
 }

@@ -1,8 +1,8 @@
 class UserActivity {
   constructor(data) {
-    this.sessions = [];
+    this.userSession = [];
     data.map((session, index) =>
-      this.sessions.push({
+      this.userSession.push({
         index: index + 1,
         kilogram: session.kilogram,
         calories: session.calories,

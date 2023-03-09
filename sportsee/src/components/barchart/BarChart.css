@@ -1,9 +1,10 @@
 
 .barchart {
-    height: 320px;
     background: #fbfbfb;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
     border-radius: 5px;
+    padding: 0% 3%;
+    font-size: 8px;
   }
   .barchart__legend {
     height: 70px;
@@ -17,6 +18,7 @@
     font-size: 15px;
     line-height: 24px;
     color: #20253a;
+    font-size: 8px;
   }
   .barchart__legend__xy {
     display: flex;
@@ -41,6 +43,7 @@
     font-size: 14px;
     line-height: 24px;
     color: #74798c;
+    font-size: 8px;
   }
   .barchart__legend__xy__1 {
     display: flex;
@@ -59,6 +62,7 @@
     font-size: 14px;
     line-height: 24px;
     color: #74798c;
+    font-size: 8px;
   }
   .barchart__graph {
    

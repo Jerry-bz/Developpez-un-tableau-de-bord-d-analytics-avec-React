@@ -1,0 +1,36 @@
+.metanolisme{
+    display: flex;
+    flex-direction: column;
+
+    row-gap: 5rem;
+}
+.box{
+    width: 160px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.box  img{
+    width: 45%;
+}
+.infos{
+    font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 24px;
+white-space: nowrap;
+
+/* identical to box height, or 120% */
+
+
+color: #282D30;
+}
+.infos span{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    color: #74798C;
+}

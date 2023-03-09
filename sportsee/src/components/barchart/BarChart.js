@@ -9,10 +9,17 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import "./BarChart.css";
+import PropTypes from "prop-types";
 
-export default function BarCharts({ dataActivity }) {
-  const { sessions, units, legend, colors } = dataActivity;
+/**
+ * component that displays the graph UserBarchart
+ * @Component - UserBarChart
+ * @param {object} dataActivity - get user activity data
+ * @returns
+ */
 
+export default function UserBarChart({ dataActivity }) {
+  const { userSession, units, legend, colors } = dataActivity;
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (
@@ -42,7 +49,7 @@ export default function BarCharts({ dataActivity }) {
       </div>
       <div className="barchart__graph">
         <ResponsiveContainer>
-          <BarChart data={sessions} barGap={8}>
+          <BarChart data={userSession} barGap={8}>
             <CartesianGrid vertical={false} stroke="#DEDEDE" />
             <XAxis
               domain={["dataMin", "dataMax"]}
@@ -79,3 +86,7 @@ export default function BarCharts({ dataActivity }) {
     </div>
   );
 }
+
+UserBarChart.propTypes = {
+  dataActivity: PropTypes.object,
+};

@@ -3,6 +3,12 @@ import logo from "../../assets/logoSportSee.svg";
 import "./Header.css";
 import React from "react";
 
+/**
+ * Show page header
+ * @Component - Header
+ * @returns {JSX.Component}
+ */
+
 export default function Header() {
   return (
     <header className="header">

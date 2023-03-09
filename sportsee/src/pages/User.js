@@ -4,7 +4,11 @@ import Header from "../components/header/Header";
 import Slidebar from "../components/slidebar/Slidebar";
 import Infos from "../components/infos/UserInfos";
 import "./User.css";
-import BarCharts from "../components/barchart/BarChart";
+import BarChart from "../components/barchart/BarChart";
+import LineChart from "../components/linechart/LineChart";
+import RadarChart from "../components/radarchart/RadarChart";
+import PeiChart from "../components/peichart/PeiChart";
+import Metabolisme from "../components/metabolisme/Metabolisme";
 import {
   getUserInfos,
   getUserActivities,
@@ -16,17 +20,19 @@ import {
   getUserPerformanceM,
 } from "../utils/GetUserData";
 import UserActivity from "../utils/UserActivity";
+import UserAverageSessions from "../utils/UserAverageSessions";
 
 export default function User() {
   const { id } = useParams();
   const [userInfosDatas, setUserInfosDatas] = useState({});
   const [userActivitiesDatas, setUserActivitiesDatas] = useState([]);
-  const [userSessionsDatas, setUserSessionsDatas] = useState();
+  const [userSessionsDatas, setUserSessionsDatas] = useState([]);
   const [userPerformanceDatas, setUserPerformanceDatas] = useState({});
 
   async function fetchData(userId) {
+  
     try {
-      let userInfosResult = await getUserInfos(userId);
+      let userInfosResult = await getUserInfos(userId)
       userInfosResult === undefined &&
         (userInfosResult = await getUserInfosM(userId));
       setUserInfosDatas(userInfosResult);
@@ -62,14 +68,31 @@ export default function User() {
   const dataActivity =
     userActivitiesDatas && new UserActivity(userActivitiesDatas);
 
+  const dataAverage =
+    userSessionsDatas && new UserAverageSessions(userSessionsDatas);
+  const keyData = userInfosDatas && userInfosDatas.keyData;
+
   return (
     <>
       <Header />
       <main>
         <Slidebar />
         <section className="user">
-          <Infos firstName={username} />
-          <BarCharts dataActivity={dataActivity} />
+          <div>
+            <Infos firstName={username} />
+          </div>
+          <div className="graph">
+            <div className="global_graphs">
+              <BarChart dataActivity={dataActivity} />
+
+              <div className="graph3">
+                <LineChart dataAverage={dataAverage} />
+                <RadarChart />
+                <PeiChart />
+              </div>
+            </div>
+            <Metabolisme keyData={keyData} />
+          </div>
         </section>
       </main>
     </>

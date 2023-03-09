@@ -1,0 +1,54 @@
+
+.linechart {
+    background: #ff0000;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  
+    
+  }
+  .linechart__comment {
+    padding-top: 20px;
+    padding-left: 30px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 24px;
+    color: #ffffff;
+    opacity: 0.5;
+  }
+  .linechart__comment span {
+    width: 147px;
+  }
+  .linechart__graph {
+    height: 190px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .linechart__graph__tooltip {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-left: 7px;
+    padding-right: 7px;
+    height: 24px;
+    border: none;
+  }
+  .linechart__graph__tooltip p {
+    font-weight: 500;
+    font-size: 8px;
+    line-height: 24px;
+    text-align: center;
+    color: black;
+  }
+  
