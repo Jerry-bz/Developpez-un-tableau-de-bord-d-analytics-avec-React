@@ -4,7 +4,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 /**
- * Component that displays the graph UserLineChart
+ * Component that displays the graph LineChart
  * @Component UserLineChart
  * @param {object} dataAverage - get average duration of sessions data
  * @returns {JSX.component}
@@ -37,7 +37,7 @@ export default function UserLineChart({ dataAverage }) {
   };
 
   return (
-    <div className="container__datas__charts__inline__this linechart">
+    <div className="linechart">
       <div className="linechart__comment">
         <span>Durée moyenne des sessions</span>
       </div>
@@ -66,6 +66,7 @@ export default function UserLineChart({ dataAverage }) {
   );
 }
 
+// The dataAverage property must be an object
 UserLineChart.propTypes = {
   dataAverage: PropTypes.object,
 };

@@ -1,3 +1,13 @@
+.userInfos {
+    font-size: 20px;
+    padding: 2% 0%;
+    height: 10%;
+}
+
 .userInfos_firstName {
     color: red;
+}
+.userInfos_text {
+    font-size: 12px;
+    font-weight:400;
 }

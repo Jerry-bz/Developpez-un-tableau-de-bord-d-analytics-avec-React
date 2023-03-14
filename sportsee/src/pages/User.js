@@ -14,43 +14,31 @@ import {
   getUserActivities,
   getUserAverageSessions,
   getUserPerformance,
-  getUserInfosM,
-  getUserActivitiesM,
-  getUserAverageSessionsM,
-  getUserPerformanceM,
 } from "../utils/GetUserData";
 import UserActivity from "../utils/UserActivity";
 import UserAverageSessions from "../utils/UserAverageSessions";
+import UserPerformance from "../utils/UserPerformance";
 
 export default function User() {
   const { id } = useParams();
   const [userInfosDatas, setUserInfosDatas] = useState({});
   const [userActivitiesDatas, setUserActivitiesDatas] = useState([]);
   const [userSessionsDatas, setUserSessionsDatas] = useState([]);
-  const [userPerformanceDatas, setUserPerformanceDatas] = useState({});
+  const [userPerformanceDatas, setUserPerformanceDatas] = useState([]);
 
   async function fetchData(userId) {
-  
     try {
-      let userInfosResult = await getUserInfos(userId)
-      userInfosResult === undefined &&
-        (userInfosResult = await getUserInfosM(userId));
+      let userInfosResult = await getUserInfos(userId);
       setUserInfosDatas(userInfosResult);
 
       let userActivitiesResult = await getUserActivities(userId);
-      userActivitiesResult === undefined &&
-        (userActivitiesResult = await getUserActivitiesM(userId));
       setUserActivitiesDatas(userActivitiesResult);
 
       let userSessionsResult = await getUserAverageSessions(userId);
-      userSessionsResult === undefined &&
-        (userSessionsResult = await getUserAverageSessionsM(userId));
       setUserSessionsDatas(userSessionsResult);
 
       let userPerformanceResult = await getUserPerformance(userId);
-      userPerformanceResult === undefined &&
-        (userPerformanceResult = await getUserPerformanceM(userId));
-      setUserPerformanceDatas(userPerformanceResult);
+      setUserPerformanceDatas(new UserPerformance(userPerformanceResult.data));
     } catch (error) {
       console.log("error");
     }
@@ -72,23 +60,28 @@ export default function User() {
     userSessionsDatas && new UserAverageSessions(userSessionsDatas);
   const keyData = userInfosDatas && userInfosDatas.keyData;
 
+  const dayScore =
+    userInfosDatas && userInfosDatas.todayScore
+      ? userInfosDatas.todayScore
+      : userInfosDatas.score;
+
   return (
     <>
       <Header />
       <main>
         <Slidebar />
         <section className="user">
-          <div>
-            <Infos firstName={username} />
-          </div>
-          <div className="graph">
-            <div className="global_graphs">
+          <Infos firstName={username} />
+          <div className="user_graph">
+            <div className="user_global_graphs">
               <BarChart dataActivity={dataActivity} />
 
-              <div className="graph3">
+              <div className="user_graph3">
                 <LineChart dataAverage={dataAverage} />
-                <RadarChart />
-                <PeiChart />
+
+                <RadarChart performance={userPerformanceDatas.dataP} />
+
+                <PeiChart dayScore={dayScore} />
               </div>
             </div>
             <Metabolisme keyData={keyData} />

@@ -63,10 +63,10 @@ async function getUserPerformanceM(userId) {
 
 /**
  * Get user information
- * Data Api
+ * Data Api ? Data Api : Data Mock
  * @function getUserInfos
  * @param {string} userId - Id of user
- * @returns {Promise} {id,keyData,(todayScore||score),userInfos}
+ * @returns {Promise | Object} {id,keyData,(todayScore||score),userInfos}
  */
 
 async function getUserInfos(userId) {
@@ -82,15 +82,16 @@ async function getUserInfos(userId) {
     }
   } catch (error) {
     console.log("Error: no data found (getUserInfos)");
+    return getUserInfosM(userId);
   }
 }
 
 /**
  * Get user activity
- * Data Api
+ * Data Api ? Data Api : Data Mock
  * @function getUserActivities
  * @param {string} userId - Id of user
- * @returns {Promise} {userId,sessions}
+ * @returns {Promise | Object} {userId,sessions}
  */
 
 async function getUserActivities(userId) {
@@ -106,15 +107,16 @@ async function getUserActivities(userId) {
   } catch (error) {
     // console.log(error)
     console.log("Error: no data found (getUserActivities)");
+    return getUserActivitiesM(userId);
   }
 }
 
 /**
  * Get user averageSessions
- * Data Api
+ * Data Api ? Data Api : Data Mock
  * @function getUserAverageSessions
  * @param {string} userId - Id of user
- * @returns {Promise} {userId,sessions}
+ * @returns {Promise | object} {userId,sessions}
  */
 
 async function getUserAverageSessions(userId) {
@@ -130,17 +132,17 @@ async function getUserAverageSessions(userId) {
       throw new Error();
     }
   } catch (error) {
-    // console.log(error)
-    console.log("Error: no data found (getUserAvergeSessions)");
+    console.log("Error: no data API found (getUserAvergeSessions)");
+    return getUserAverageSessionsM(userId);
   }
 }
 
 /**
  * Get user performance
- * Data Api
+ * Data Api ? Data Api : Data Mock
  * @function getUserPerformance
  * @param {string} userId - Id of user
- * @returns {Promise} {userId,kind,data}
+ * @returns {Promise | Object} {userId,kind,data}
  */
 
 async function getUserPerformance(userId) {
@@ -156,8 +158,8 @@ async function getUserPerformance(userId) {
       throw new Error();
     }
   } catch (error) {
-    // console.log(error)
-    return "Error: no data found (getUserPerformance)";
+    console.log("Error: no data API found (getUserPerformance)");
+    return getUserPerformanceM(userId);
   }
 }
 

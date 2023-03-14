@@ -1,70 +1,73 @@
-import React, { PureComponent } from "react";
-import { PieChart, Pie, Sector, ResponsiveContainer } from "recharts";
+import React from "react";
+import { PieChart, Pie, Cell, Legend, ResponsiveContainer } from "recharts";
+import { useEffect, useState } from "react";
+import "./PieChart.css";
+import PropTypes from "prop-types";
 
-const data = [
-  { name: "Group A", value: 400 },
-  { name: "Group B", value: 300 },
-];
+/**
+ * component that displays the graph UserPiechart
+ * @Component - UserPieChart
+ * @param {object} dayScore - get user activity score data
+ * @returns {JSX.element}
+ */
 
-const renderActiveShape = (props) => {
-  const {
-    cx,
-    cy,
-    innerRadius,
-    outerRadius,
-    startAngle,
-    endAngle,
-    fill,
-    payload,
-  } = props;
+export default function UserPieChart({ dayScore }) {
+  const [todayScore, setTodayScore] = useState(0);
+  const COLORS = ["#FF0000", "#FFFFFF"];
+
+  useEffect(() => {
+    if (dayScore) {
+      setTodayScore(dayScore * 100);
+    }
+  }, [dayScore]);
+
+  const data = [{ total: todayScore }, { total: 100 - todayScore }];
+
+  function CustomLegend({ payload }) {
+    if (payload && payload.length) {
+      return (
+        <div className="peichart_legend-score">
+          <p className="peichart_score-result">{payload[0].payload.value}%</p>
+          <p className="peichart_score-text">de votre</p>
+          <p className="peichart_score-text">objectif</p>
+        </div>
+      );
+    }
+  }
 
   return (
-    <g>
-      <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
-        {payload.name}
-      </text>
-      <Sector
-        cx={cx}
-        cy={cy}
-        innerRadius={innerRadius}
-        outerRadius={outerRadius}
-        startAngle={startAngle}
-        endAngle={endAngle}
-        fill={fill}
-      />
-    </g>
-  );
-};
-
-export default class Example extends PureComponent {
-  state = {
-    activeIndex: 0,
-  };
-
-  onPieEnter = (_, index) => {
-    this.setState({
-      activeIndex: index,
-    });
-  };
-
-  render() {
-    return (
-      <ResponsiveContainer width="100%" height="100%">
-        <PieChart width={400} height={400}>
+    <div className="peichart">
+      <h3 className="peichart_score">Score</h3>
+      <ResponsiveContainer>
+        <PieChart className="peichart_container">
           <Pie
-            activeIndex={this.state.activeIndex}
-            activeShape={renderActiveShape}
             data={data}
-            cx="50%"
-            cy="50%"
-            innerRadius={60}
-            outerRadius={80}
-            fill="#FF0000"
-            dataKey="value"
-            onMouseEnter={this.onPieEnter}
-          />
+            dataKey="total"
+            cx="center"
+            cy="center"
+            innerRadius={90}
+            outerRadius={100}
+            paddingAngle={5}
+            startAngle={90}
+            endAngle={450}
+            cornerRadius={10}
+          >
+            {data.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={COLORS[index % COLORS.length]}
+              />
+            ))}
+          </Pie>
+
+          <Legend verticalAlign="middle" content={CustomLegend} />
         </PieChart>
       </ResponsiveContainer>
-    );
-  }
+    </div>
+  );
 }
+
+// The dayScore property must be a Number
+UserPieChart.propTypes = {
+  dayScore: PropTypes.number,
+};

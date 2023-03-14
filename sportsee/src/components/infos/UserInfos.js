@@ -20,6 +20,7 @@ export default function Infos({ firstName }) {
   );
 }
 
+// The firstName property must be a string
 Infos.propTypes = {
   firstName: PropTypes.string,
 };

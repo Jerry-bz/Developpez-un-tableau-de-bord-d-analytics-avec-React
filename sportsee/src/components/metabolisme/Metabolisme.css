@@ -1,36 +1,37 @@
-.metanolisme{
-    display: flex;
-    flex-direction: column;
-
-    row-gap: 5rem;
+.metabolisme {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 20%;
 }
-.box{
-    width: 160px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.metabolisme_box {
+  padding: 5% 0%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #fbfbfb;
 }
-.box  img{
-    width: 45%;
+.metabolisme_box img {
+  width: 30%;
+  aspect-ratio: 6/4;
 }
-.infos{
-    font-family: 'Roboto';
-font-style: normal;
-font-weight: 700;
-font-size: 24px;
-line-height: 24px;
-white-space: nowrap;
+.metabolisme_infos {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  white-space: nowrap;
 
-/* identical to box height, or 120% */
+  /* identical to box height, or 120% */
 
-
-color: #282D30;
+  color: #282d30;
 }
-.infos span{
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 24px;
-    color: #74798C;
+.metabolisme_infos span {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  color: #74798c;
 }

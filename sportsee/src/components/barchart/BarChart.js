@@ -12,10 +12,10 @@ import "./BarChart.css";
 import PropTypes from "prop-types";
 
 /**
- * component that displays the graph UserBarchart
- * @Component - UserBarChart
+ * Component that displays the graph BarChart
+ * @Component UserBarChart
  * @param {object} dataActivity - get user activity data
- * @returns
+ * @returns {JSX.element}
  */
 
 export default function UserBarChart({ dataActivity }) {
@@ -87,6 +87,7 @@ export default function UserBarChart({ dataActivity }) {
   );
 }
 
+// The dataActivity property must be an object
 UserBarChart.propTypes = {
   dataActivity: PropTypes.object,
 };

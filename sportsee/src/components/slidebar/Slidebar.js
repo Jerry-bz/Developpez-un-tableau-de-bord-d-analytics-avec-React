@@ -2,8 +2,14 @@ import iconMeditation from "../../assets/iconMeditation.svg";
 import iconSwiming from "../../assets/iconSwiming.svg";
 import iconBike from "../../assets/iconBike.svg";
 import iconDumbbell from "../../assets/iconDumbbell.svg";
-import  "./Slidebar.css";
+import "./Slidebar.css";
 import React from "react";
+
+/**
+ * Show Slidebar
+ * @Component - Slidebar
+ * @returns {JSX.Component}
+ */
 
 export default function Slidebar() {
   return (
@@ -19,11 +25,7 @@ export default function Slidebar() {
           src={iconSwiming}
           alt="logo swimming"
         ></img>
-        <img
-          className="slidebar_img"
-          src={iconBike}
-          alt="logo bike"
-        ></img>
+        <img className="slidebar_img" src={iconBike} alt="logo bike"></img>
         <img
           className="slidebar_img"
           src={iconDumbbell}
