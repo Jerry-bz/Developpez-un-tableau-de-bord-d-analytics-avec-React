@@ -1,5 +1,6 @@
 /**
  * Data model for UserRadarChart
+ * @constructor data 
  */
 export default class UserPerformance {
   constructor(data) {

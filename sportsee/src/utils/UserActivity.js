@@ -1,3 +1,8 @@
+/**
+ * @Class - UserActivity
+ * @constructor data 
+ */
+
 class UserActivity {
   constructor(data) {
     this.userSession = [];

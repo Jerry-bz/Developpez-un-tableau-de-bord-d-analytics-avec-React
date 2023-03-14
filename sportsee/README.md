@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+## Sportsee is an application which allowing to track your workout activities.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Project Sportsee
 
-## Available Scripts
+Built a React project with external datas from a API
 
-In the project directory, you can run:
+### Technologies and Dependencies
 
-### `npm start`
+- Javascript
+- CSS
+- Visual Studio code
+- [Npm](https://www.npmjs.com/package/npm) (v8.19.2)
+- [NodeJS](https://nodejs.org/en/) (v18.12.1)
+- [React](https://fr.reactjs.org/) (v13.4.0)
+- [Create React App](https://github.com/facebook/create-react-app)
+- [React-router-dom](https://reactrouter.com/) (v6.8.1)
+- [Recharts](https://recharts.org/en-US/) (v2.4.3)
+- [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+- [Prop-types](https://www.npmjs.com/package/prop-types)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Ressources and Documents
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [Figma](https://www.figma.com/file/BMomGVZqLZb811mDMShpLu/UI-design-Sportify-FR?node-id=0%3A1)
+- [Notion](https://www.notion.so/openclassrooms/Copy-of-Dev4U-projet-Learn-Home-6686aa4b5f44417881a4884c9af5669e)
 
-### `npm test`
+# Guide installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Install Back
 
-### `npm run build`
+- First, follow the instructions to install the backend API on [P12-backendAPI](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Inside this back-end repository, install dependencies:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`npm install`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+With the terminal, Launch back-end on port 3001 (default port):
 
-### `npm run eject`
+`npm run dev`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Install Front
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- And second time, clone the repository of SportSee Front-End on [P12-frontend](https://github.com/Jerry-bz/Developpez-un-tableau-de-bord-d-analytics-avec-React.git)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Inside this Front-End repository, install dependencies:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+`npm install`
 
-## Learn More
+With the terminal, launch Front-End on port 3000:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`npm start`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Front-End is now rendered at URL `http://localhost:3000`
 
-### Code Splitting
+We have 2 users available. You can select the user on page Home or use this different link:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+`http://localhost:3000/user/12`
+or
+`http://localhost:3000/user/18`
 
-### Analyzing the Bundle Size
+# Author
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Jerry Brzt

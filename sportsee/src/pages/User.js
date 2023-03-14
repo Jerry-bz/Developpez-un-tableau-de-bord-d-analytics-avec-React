@@ -19,6 +19,10 @@ import UserActivity from "../utils/UserActivity";
 import UserAverageSessions from "../utils/UserAverageSessions";
 import UserPerformance from "../utils/UserPerformance";
 
+/**
+ * User Main Page
+ * @returns {JSX.component} Dashbord of User
+ */
 export default function User() {
   const { id } = useParams();
   const [userInfosDatas, setUserInfosDatas] = useState({});
@@ -26,6 +30,7 @@ export default function User() {
   const [userSessionsDatas, setUserSessionsDatas] = useState([]);
   const [userPerformanceDatas, setUserPerformanceDatas] = useState([]);
 
+  // Get data Api of the User, update State
   async function fetchData(userId) {
     try {
       let userInfosResult = await getUserInfos(userId);
@@ -48,11 +53,12 @@ export default function User() {
     fetchData(id);
   }, [id]);
 
+  // Call the classes that form the data
   const username =
     userInfosDatas &&
     userInfosDatas.userInfos &&
     userInfosDatas.userInfos.firstName;
-
+  
   const dataActivity =
     userActivitiesDatas && new UserActivity(userActivitiesDatas);
 
@@ -64,7 +70,7 @@ export default function User() {
     userInfosDatas && userInfosDatas.todayScore
       ? userInfosDatas.todayScore
       : userInfosDatas.score;
-
+  
   return (
     <>
       <Header />

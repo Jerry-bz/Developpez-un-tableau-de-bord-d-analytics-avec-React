@@ -13,7 +13,7 @@ import PropTypes from "prop-types";
 /**
  * component that displays the graph UserRadarChart
  * @Component - UserRadarChart
- * @param {object} dayScore - get user performance data
+ * @param {object} performance - get user performance data
  * @returns {JSX.element}
  */
 
