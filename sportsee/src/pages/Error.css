@@ -1,0 +1,20 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: calc(100vh - 20vh);
+  width: calc(100vw - 20vw);
+  margin: auto;
+}
+
+.error_404 {
+  text-align: center;
+  color: #ff0000;
+  font-size: 50px;
+}
+
+.error_redirection {
+  text-align: center;
+  color: black;
+  font-size: 40px;
+}

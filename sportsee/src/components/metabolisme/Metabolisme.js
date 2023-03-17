@@ -13,7 +13,8 @@ import PropTypes from "prop-types";
  * @returns {JSX.component}
  */
 
-export default function UserMetabolisme({ keyData }) {
+export default function UserMetabolisme({ keyData }) {  
+  
   const [calorie, setCalorie] = useState(0);
   const [protein, setProtein] = useState(0);
   const [carbohydrate, setCarbohydrate] = useState(0);

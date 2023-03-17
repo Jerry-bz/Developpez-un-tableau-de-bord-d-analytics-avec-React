@@ -1,6 +1,9 @@
 /**
+ * Get data and transform date property of array by index
+ * Graph Barchart
  * @Class - UserActivity
- * @constructor data 
+ * @constructor data
+ * @returns {object} (colors,legend,units,UserSession)
  */
 
 class UserActivity {

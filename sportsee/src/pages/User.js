@@ -20,30 +20,48 @@ import UserAverageSessions from "../utils/UserAverageSessions";
 import UserPerformance from "../utils/UserPerformance";
 
 /**
- * User Main Page
+ * Show User Page
  * @returns {JSX.component} Dashbord of User
  */
-export default function User() {
-  const { id } = useParams();
-  const [userInfosDatas, setUserInfosDatas] = useState({});
-  const [userActivitiesDatas, setUserActivitiesDatas] = useState([]);
-  const [userSessionsDatas, setUserSessionsDatas] = useState([]);
-  const [userPerformanceDatas, setUserPerformanceDatas] = useState([]);
 
-  // Get data Api of the User, update State
+export default function User() {
+  // Get id of url
+  const { id } = useParams();
+
+  const [userInfos, setUserInfos] = useState("");
+  const [userScore, setUserScore] = useState(0);
+  const [userKeyData, setUserKeyData] = useState({});
+  const [userActivities, setUserActivities] = useState([]);
+  const [userSessions, setUserSessions] = useState({});
+  const [userPerfomance, setUserPerfomance] = useState({});
+
+  // Get data Api with id of the User
+
   async function fetchData(userId) {
     try {
+      // Get firstame of User
       let userInfosResult = await getUserInfos(userId);
-      setUserInfosDatas(userInfosResult);
+      setUserInfos(userInfosResult.userInfos.firstName);
+
+      //  Get property score or todayScore
+      let userScoreResult = await getUserInfos(userId);
+      setUserScore(() =>
+        userScoreResult.score
+          ? userScoreResult.score
+          : userScoreResult.todayScore
+      );
+
+      let userKeyDataResult = await getUserInfos(userId);
+      setUserKeyData(userKeyDataResult.keyData);
 
       let userActivitiesResult = await getUserActivities(userId);
-      setUserActivitiesDatas(userActivitiesResult);
+      setUserActivities(userActivitiesResult);
 
       let userSessionsResult = await getUserAverageSessions(userId);
-      setUserSessionsDatas(userSessionsResult);
+      setUserSessions(new UserAverageSessions(userSessionsResult));
 
       let userPerformanceResult = await getUserPerformance(userId);
-      setUserPerformanceDatas(new UserPerformance(userPerformanceResult.data));
+      setUserPerfomance(new UserPerformance(userPerformanceResult.data));
     } catch (error) {
       console.log("error");
     }
@@ -53,44 +71,26 @@ export default function User() {
     fetchData(id);
   }, [id]);
 
-  // Call the classes that form the data
-  const username =
-    userInfosDatas &&
-    userInfosDatas.userInfos &&
-    userInfosDatas.userInfos.firstName;
-  
-  const dataActivity =
-    userActivitiesDatas && new UserActivity(userActivitiesDatas);
-
-  const dataAverage =
-    userSessionsDatas && new UserAverageSessions(userSessionsDatas);
-  const keyData = userInfosDatas && userInfosDatas.keyData;
-
-  const dayScore =
-    userInfosDatas && userInfosDatas.todayScore
-      ? userInfosDatas.todayScore
-      : userInfosDatas.score;
-  
   return (
     <>
       <Header />
       <main>
         <Slidebar />
         <section className="user">
-          <Infos firstName={username} />
+          <Infos firstName={userInfos} />
           <div className="user_graph">
             <div className="user_global_graphs">
-              <BarChart dataActivity={dataActivity} />
+              <BarChart dataActivity={new UserActivity(userActivities)} />
 
               <div className="user_graph3">
-                <LineChart dataAverage={dataAverage} />
+                <LineChart dataAverage={userSessions} />
 
-                <RadarChart performance={userPerformanceDatas.dataP} />
+                <RadarChart performance={userPerfomance.performance} />
 
-                <PeiChart dayScore={dayScore} />
+                <PeiChart dayScore={userScore} />
               </div>
             </div>
-            <Metabolisme keyData={keyData} />
+            <Metabolisme keyData={userKeyData} />
           </div>
         </section>
       </main>

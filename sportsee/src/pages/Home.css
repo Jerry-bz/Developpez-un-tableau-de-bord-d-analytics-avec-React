@@ -1,6 +1,27 @@
-.home_user {
+.home {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  column-gap: 3rem;
+  height: 20vh;
+  width: 40vw;
+  margin: 10% auto;
+}
+
+.home a {
+  text-decoration: none;
+}
+
+.home_user {
+  padding: 3%;
+  text-align: center;
+  width: 10vw;
+  border-radius: 5%;
+  box-shadow: 3px 2px 8px gray;
+  background-color: #020203;
+  filter: contrast(80%);
+  color: #fbfbfb;
+}
+
+.home_user:hover {
+  transform: translate(0px, -5px);
 }

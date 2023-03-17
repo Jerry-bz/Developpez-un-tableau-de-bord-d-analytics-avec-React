@@ -1,10 +1,16 @@
 /**
- * Data model for UserRadarChart
- * @constructor data 
+ * Get data and add subject property
+ * Graph RadarChart
+ * @Class - UserPerformance
+ * @constructor data
+ * @returns {object}
  */
+
+
 export default class UserPerformance {
   constructor(data) {
-    this.dataP = [
+   
+    this.performance = [
       { subject: "Intensité", value: null, kind: 6 },
       { subject: "Vitesse", value: null, kind: 5 },
       { subject: "Force", value: null, kind: 4 },
@@ -12,9 +18,19 @@ export default class UserPerformance {
       { subject: "Energie", value: null, kind: 2 },
       { subject: "Cardio", value: null, kind: 1 },
     ];
-
-    this.dataP.map((d) => {
-      return (d.value = data.filter((perf) => perf.kind === d.kind)[0].value);
-    });
+    this.updateData(data);
   }
+
+   // Get value of data for performance
+   updateData(data) {
+    data.forEach((element) => {
+      const index = this.performance.findIndex((perf) => perf.kind === element.kind);
+      if (index !== -1) {
+        this.performance[index].value = element.value;
+      }
+    });
+  } 
 }
+
+
+
